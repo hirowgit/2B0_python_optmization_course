@@ -43,7 +43,6 @@ def cubic_bezier_converter(start, control1, control2, end):
 # On the design of "cubic_bezier_converter" was learned from
 # https://stackoverflow.com/questions/36971363/how-to-interpolate-svg-path-into-a-pixel-coordinates-not-simply-raster-in-pyth
 
-
 doc = minidom.parse('data/LaneMap2.svg')
 path_strings = [path.getAttribute('d') for path
                 in doc.getElementsByTagName('path')]
@@ -52,18 +51,12 @@ doc.unlink()
 points_np_all=[]
 points_np_all=np.empty((len(path_strings)),dtype=object)
 print(len(points_np_all))
-#points_np_all[k]=np.array([])
 
 for k in range(len(path_strings)):
 #for path_string in path_strings:
     path = parse_path(path_strings[k])
     points_np_merge=np.empty((0,2), float)
-    #points_np_merge=np.empty(points_np_merge)
     for dat in path:
-
-#path=parse_path(path_strings[block])
-
-#dat=path[key]
 
         if type(dat).__name__=='CubicBezier':
             start_np = np.array([dat.start.real, dat.start.imag])
@@ -96,23 +89,8 @@ for k in range(len(path_strings)):
             points_np=np.array([])
         #points_np_merge=np.concatenate(points_np_merge,points_np)
         points_np_merge=np.append(points_np_merge, points_np, axis=0)
-#         if k==0:
-#             points_np_merge=points_np
-#         else:
-#             points_np_merge=np.append(points_np_merge,points_np,axis=0)
-        #plt.plot(points_np[:, 0], points_np[:, 1], '.-')
-        #plt.show()
-        #print(len(points_np))
-        #print(len(points_np_merge))
-    #points_np_all1=points_np_all1.append(points_np_merge)
-    #points_np_all=points_np_merge
     points_np_all[k]= points_np_merge
-#     points_np_all=points_np_all.append(points_np_merge)
-    #print(len(points_np_all))
     print(' %d : %d dots' % (k,len(points_np_merge)))
-    #plt.plot(points_np_merge[:, 0], points_np_merge[:, 1], '.-')
-    #plt.show()
-
 
 len(points_np_all)
 

@@ -333,7 +333,6 @@
         \PY{c+c1}{\PYZsh{} On the design of \PYZdq{}cubic\PYZus{}bezier\PYZus{}converter\PYZdq{} was learned from}
         \PY{c+c1}{\PYZsh{} https://stackoverflow.com/questions/36971363/how\PYZhy{}to\PYZhy{}interpolate\PYZhy{}svg\PYZhy{}path\PYZhy{}into\PYZhy{}a\PYZhy{}pixel\PYZhy{}coordinates\PYZhy{}not\PYZhy{}simply\PYZhy{}raster\PYZhy{}in\PYZhy{}pyth}
         
-        
         \PY{n}{doc} \PY{o}{=} \PY{n}{minidom}\PY{o}{.}\PY{n}{parse}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/LaneMap2.svg}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
         \PY{n}{path\PYZus{}strings} \PY{o}{=} \PY{p}{[}\PY{n}{path}\PY{o}{.}\PY{n}{getAttribute}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{for} \PY{n}{path}
                         \PY{o+ow}{in} \PY{n}{doc}\PY{o}{.}\PY{n}{getElementsByTagName}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{path}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}
@@ -342,18 +341,12 @@
         \PY{n}{points\PYZus{}np\PYZus{}all}\PY{o}{=}\PY{p}{[}\PY{p}{]}
         \PY{n}{points\PYZus{}np\PYZus{}all}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{path\PYZus{}strings}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{n}{dtype}\PY{o}{=}\PY{n+nb}{object}\PY{p}{)}
         \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{points\PYZus{}np\PYZus{}all}\PY{p}{)}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{}points\PYZus{}np\PYZus{}all[k]=np.array([])}
         
         \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{path\PYZus{}strings}\PY{p}{)}\PY{p}{)}\PY{p}{:}
         \PY{c+c1}{\PYZsh{}for path\PYZus{}string in path\PYZus{}strings:}
             \PY{n}{path} \PY{o}{=} \PY{n}{parse\PYZus{}path}\PY{p}{(}\PY{n}{path\PYZus{}strings}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{)}
             \PY{n}{points\PYZus{}np\PYZus{}merge}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n+nb}{float}\PY{p}{)}
-            \PY{c+c1}{\PYZsh{}points\PYZus{}np\PYZus{}merge=np.empty(points\PYZus{}np\PYZus{}merge)}
             \PY{k}{for} \PY{n}{dat} \PY{o+ow}{in} \PY{n}{path}\PY{p}{:}
-        
-        \PY{c+c1}{\PYZsh{}path=parse\PYZus{}path(path\PYZus{}strings[block])}
-        
-        \PY{c+c1}{\PYZsh{}dat=path[key]}
         
                 \PY{k}{if} \PY{n+nb}{type}\PY{p}{(}\PY{n}{dat}\PY{p}{)}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}\PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{CubicBezier}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
                     \PY{n}{start\PYZus{}np} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{dat}\PY{o}{.}\PY{n}{start}\PY{o}{.}\PY{n}{real}\PY{p}{,} \PY{n}{dat}\PY{o}{.}\PY{n}{start}\PY{o}{.}\PY{n}{imag}\PY{p}{]}\PY{p}{)}
@@ -386,23 +379,8 @@
                     \PY{n}{points\PYZus{}np}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
                 \PY{c+c1}{\PYZsh{}points\PYZus{}np\PYZus{}merge=np.concatenate(points\PYZus{}np\PYZus{}merge,points\PYZus{}np)}
                 \PY{n}{points\PYZus{}np\PYZus{}merge}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{points\PYZus{}np\PYZus{}merge}\PY{p}{,} \PY{n}{points\PYZus{}np}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{}         if k==0:}
-        \PY{c+c1}{\PYZsh{}             points\PYZus{}np\PYZus{}merge=points\PYZus{}np}
-        \PY{c+c1}{\PYZsh{}         else:}
-        \PY{c+c1}{\PYZsh{}             points\PYZus{}np\PYZus{}merge=np.append(points\PYZus{}np\PYZus{}merge,points\PYZus{}np,axis=0)}
-                \PY{c+c1}{\PYZsh{}plt.plot(points\PYZus{}np[:, 0], points\PYZus{}np[:, 1], \PYZsq{}.\PYZhy{}\PYZsq{})}
-                \PY{c+c1}{\PYZsh{}plt.show()}
-                \PY{c+c1}{\PYZsh{}print(len(points\PYZus{}np))}
-                \PY{c+c1}{\PYZsh{}print(len(points\PYZus{}np\PYZus{}merge))}
-            \PY{c+c1}{\PYZsh{}points\PYZus{}np\PYZus{}all1=points\PYZus{}np\PYZus{}all1.append(points\PYZus{}np\PYZus{}merge)}
-            \PY{c+c1}{\PYZsh{}points\PYZus{}np\PYZus{}all=points\PYZus{}np\PYZus{}merge}
             \PY{n}{points\PYZus{}np\PYZus{}all}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{o}{=} \PY{n}{points\PYZus{}np\PYZus{}merge}
-        \PY{c+c1}{\PYZsh{}     points\PYZus{}np\PYZus{}all=points\PYZus{}np\PYZus{}all.append(points\PYZus{}np\PYZus{}merge)}
-            \PY{c+c1}{\PYZsh{}print(len(points\PYZus{}np\PYZus{}all))}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ : }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ dots}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{k}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{points\PYZus{}np\PYZus{}merge}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-            \PY{c+c1}{\PYZsh{}plt.plot(points\PYZus{}np\PYZus{}merge[:, 0], points\PYZus{}np\PYZus{}merge[:, 1], \PYZsq{}.\PYZhy{}\PYZsq{})}
-            \PY{c+c1}{\PYZsh{}plt.show()}
-        
         
         \PY{n+nb}{len}\PY{p}{(}\PY{n}{points\PYZus{}np\PYZus{}all}\PY{p}{)}
         

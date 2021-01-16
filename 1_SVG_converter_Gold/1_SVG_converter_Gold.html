@@ -13160,7 +13160,6 @@ div#notebook {
 <span class="c1"># On the design of &quot;cubic_bezier_converter&quot; was learned from</span>
 <span class="c1"># https://stackoverflow.com/questions/36971363/how-to-interpolate-svg-path-into-a-pixel-coordinates-not-simply-raster-in-pyth</span>
 
-
 <span class="n">doc</span> <span class="o">=</span> <span class="n">minidom</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;data/LaneMap2.svg&#39;</span><span class="p">)</span>
 <span class="n">path_strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span>
                 <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)]</span>
@@ -13169,18 +13168,12 @@ div#notebook {
 <span class="n">points_np_all</span><span class="o">=</span><span class="p">[]</span>
 <span class="n">points_np_all</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">path_strings</span><span class="p">)),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points_np_all</span><span class="p">))</span>
-<span class="c1">#points_np_all[k]=np.array([])</span>
 
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path_strings</span><span class="p">)):</span>
 <span class="c1">#for path_string in path_strings:</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">parse_path</span><span class="p">(</span><span class="n">path_strings</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
     <span class="n">points_np_merge</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="c1">#points_np_merge=np.empty(points_np_merge)</span>
     <span class="k">for</span> <span class="n">dat</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
-
-<span class="c1">#path=parse_path(path_strings[block])</span>
-
-<span class="c1">#dat=path[key]</span>
 
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;CubicBezier&#39;</span><span class="p">:</span>
             <span class="n">start_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dat</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">dat</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">imag</span><span class="p">])</span>
@@ -13213,23 +13206,8 @@ div#notebook {
             <span class="n">points_np</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
         <span class="c1">#points_np_merge=np.concatenate(points_np_merge,points_np)</span>
         <span class="n">points_np_merge</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">points_np_merge</span><span class="p">,</span> <span class="n">points_np</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="c1">#         if k==0:</span>
-<span class="c1">#             points_np_merge=points_np</span>
-<span class="c1">#         else:</span>
-<span class="c1">#             points_np_merge=np.append(points_np_merge,points_np,axis=0)</span>
-        <span class="c1">#plt.plot(points_np[:, 0], points_np[:, 1], &#39;.-&#39;)</span>
-        <span class="c1">#plt.show()</span>
-        <span class="c1">#print(len(points_np))</span>
-        <span class="c1">#print(len(points_np_merge))</span>
-    <span class="c1">#points_np_all1=points_np_all1.append(points_np_merge)</span>
-    <span class="c1">#points_np_all=points_np_merge</span>
     <span class="n">points_np_all</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span> <span class="n">points_np_merge</span>
-<span class="c1">#     points_np_all=points_np_all.append(points_np_merge)</span>
-    <span class="c1">#print(len(points_np_all))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; </span><span class="si">%d</span><span class="s1"> : </span><span class="si">%d</span><span class="s1"> dots&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">points_np_merge</span><span class="p">)))</span>
-    <span class="c1">#plt.plot(points_np_merge[:, 0], points_np_merge[:, 1], &#39;.-&#39;)</span>
-    <span class="c1">#plt.show()</span>
-
 
 <span class="nb">len</span><span class="p">(</span><span class="n">points_np_all</span><span class="p">)</span>
 
