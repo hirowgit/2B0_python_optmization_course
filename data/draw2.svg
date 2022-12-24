@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:grid x="0" y="0" width="50" height="50"/>
+  </defs>
+  <polygon style="stroke: rgb(0, 0, 0); fill: rgb(205, 209, 191);" points="100 50 100 150 350 150 350 50"/>
+  <polyline style="stroke: rgb(0, 0, 0); fill: none;" points="300 100 250 150 300 200"/>
+  <polyline style="stroke: rgb(0, 0, 0); fill: none;" points="150 100 100 150 150 200"/>
+  <polyline style="stroke: rgb(0, 0, 0); fill: none;" points="200 100 150 150 200 200"/>
+  <polyline style="stroke: rgb(0, 0, 0); fill: none;" points="250 100 200 150 250 200"/>
+</svg>
