@@ -11,7 +11,7 @@
 # # @Author  : Hiroaki Wagatsuma
 # # @Site    : https://github.com/hirowgit/2B0_python_optmization_course
 # # @IDE     : Python 3.9.14 (main, Sep  6 2022, 23:29:09) [Clang 13.1.6 (clang-1316.0.21.2.5)] on darwin
-# # @File    : SVG_converter_basic1.py
+# # @File    : SVG_converter_basic2.py
 
 
 import numpy as np
